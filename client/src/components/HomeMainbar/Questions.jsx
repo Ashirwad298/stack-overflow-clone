@@ -1,9 +1,17 @@
-import React from 'react'
+import React  from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addComment } from '../../actions/question'
+
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-const Questions = ({question}) => {
+const Questions = ({ question }) => {
+
+    const dispatch = useDispatch()
+    console.log(question._id);
+    // console.log(question);
     return (
+    <>
         <div className='display-question-container'>
             <div className='display-votes-ans'>
                 <p>{question.upVote.length - question.downVote.length}</p>
@@ -29,6 +37,7 @@ const Questions = ({question}) => {
                 </div>
             </div>
         </div>
+    </>
     )
 }
 

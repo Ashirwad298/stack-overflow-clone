@@ -14,10 +14,13 @@ import './UsersProfile.css'
 const UserProfile = () => {
 
     const { id } = useParams()
+    console.log("UserId: ", id)
     const users = useSelector((state) => state.usersReducer)
     const currentProfile = users.filter((user) => user._id === id)[0]
     const currentUser = useSelector((state) => state.currentUserReducer)
     const [Switch, setSwitch] = useState(false)
+    var a = new Date().getFullYear()- Number( currentProfile?.DOB.substring(0, 4) );
+    console.log(a, typeof (a));
 
     return (
         <div className='home-container-1'>
@@ -32,6 +35,7 @@ const UserProfile = () => {
                             <div className="user-name">
                                 <h1>{currentProfile?.name}</h1>
                                 <p><FontAwesomeIcon icon={faBirthdayCake} /> Joined {moment(currentProfile?.joinedOn).fromNow()}</p>
+                                <p>{ `Age is ${a} years` } </p>  
                             </div>
                         </div>
                         {

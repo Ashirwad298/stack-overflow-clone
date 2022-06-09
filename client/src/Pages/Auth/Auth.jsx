@@ -12,6 +12,7 @@ const Auth = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [DOB, setDOB] = useState('');
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -29,7 +30,7 @@ const Auth = () => {
             if(!name){
                 alert("Enter a name to continue")
             }
-            dispatch(signup({ name, email, password }, navigate))
+            dispatch(signup({ name, email, password, DOB }, navigate))
         }else{
             dispatch(login({ email, password }, navigate))
         }
@@ -53,6 +54,14 @@ const Auth = () => {
                         <h4>Email</h4>
                         <input type="email" name='email' id='email' onChange={(e) => {setEmail(e.target.value)}}/>
                     </label>
+                    {
+                        isSignup && (
+                        <label htmlFor="DOB">
+                            <h4>Date of Birth</h4>
+                            <input type="date" name='DOB' id='DOB' onChange={(e) => { setDOB(e.target.value) }} />
+                            </label>
+                        )
+                    }
                     <label htmlFor="password">
                         <div style={{display:"flex", justifyContent:"space-between"}}>
                             <h4>Password</h4>

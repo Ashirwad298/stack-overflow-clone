@@ -10,6 +10,7 @@ import './Questions.css'
 import Avatar from '../../components/Avatar/Avatar'
 import DisplayAnswer from './DisplayAnswer'
 import { postAnswer, deleteQuestion, voteQuestion } from '../../actions/question'
+import Comments from "./Comments"
 
 const QuestionsDetails = () => {
     const { id } = useParams()
@@ -151,6 +152,7 @@ const QuestionsDetails = () => {
                                             </div>
                                         </div>
                                     </div>
+                                    <Comments question={question}/>
                                 </section>
                                 {
                                     question.noOfAnswers !== 0 && (
